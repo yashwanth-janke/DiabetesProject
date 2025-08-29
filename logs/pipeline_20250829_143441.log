@@ -1,0 +1,8 @@
+2025-08-29 14:34:41,371 - __main__ - INFO - Pipeline initialized successfully
+2025-08-29 14:34:41,371 - __main__ - INFO - STARTING DIABETES READMISSION PREDICTION PIPELINE
+2025-08-29 14:34:41,371 - __main__ - INFO - ================================================================================
+2025-08-29 14:34:41,372 - __main__ - INFO - ============================================================
+2025-08-29 14:34:41,372 - __main__ - INFO - STEP 1: Dataset Analysis & Preprocessing
+2025-08-29 14:34:41,372 - __main__ - INFO - ============================================================
+2025-08-29 14:34:41,375 - preprocessing.data_cleaner - ERROR - Error loading data: [Errno 2] No such file or directory: 'data/raw/diabetic_data.csv'
+2025-08-29 14:34:41,375 - __main__ - ERROR - Pipeline execution failed: [Errno 2] No such file or directory: 'data/raw/diabetic_data.csv'

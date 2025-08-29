@@ -1,0 +1,65 @@
+# Data Configuration
+data:
+  raw_path: "data/raw/diabetic_data.csv"
+  processed_path: "data/processed/"
+  target_column: "readmitted"
+  
+# Preprocessing Configuration
+preprocessing:
+  missing_threshold: 0.5
+  categorical_encoding: "label"
+  scaling_method: "standard"
+  imbalance_methods:
+    - "SMOTE"
+    - "SMOTE-ENN" 
+    - "class_weights"
+    - "cost_sensitive"
+
+# Feature Selection Configuration
+feature_selection:
+  methods:
+    - "statistical"
+    - "model_based"
+    - "rfe"
+    - "shap"
+    - "hybrid"
+  n_features: 20
+
+# Model Configuration
+models:
+  base_models:
+    - "logistic_regression"
+    - "decision_tree"
+    - "random_forest"
+    - "knn"
+    - "svm"
+    - "xgboost"
+    - "neural_network"
+  
+# Meta-Learning Configuration
+meta_learning:
+  methods:
+    - "stacking"
+    - "blending"
+    - "weighted_ensemble"
+  meta_model: "neural_network"
+
+# Evaluation Configuration
+evaluation:
+  train_test_splits: [0.7, 0.8, 0.9]
+  cv_folds: [5, 10]
+  metrics:
+    - "accuracy"
+    - "precision" 
+    - "recall"
+    - "f1_score"
+    - "auc"
+    - "specificity"
+    - "sensitivity"
+    - "brier_score"
+
+# Explainability Configuration
+explainability:
+  shap_samples: 1000
+  lime_samples: 500
+  dice_samples: 100

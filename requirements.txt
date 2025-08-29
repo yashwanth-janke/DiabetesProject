@@ -1,0 +1,36 @@
+# Core Data Science Libraries
+pandas>=1.5.0
+numpy>=1.21.0
+scikit-learn>=1.1.0
+scipy>=1.9.0
+
+# Machine Learning Libraries
+xgboost>=1.6.0
+imbalanced-learn>=0.9.0
+boruta>=0.3.0
+
+# Deep Learning
+tensorflow>=2.9.0
+# OR pytorch>=1.12.0
+
+# Explainability
+shap>=0.41.0
+lime>=0.2.0.1
+dice-ml>=0.9.0
+
+# Visualization
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.9.0
+
+# Utilities
+pyyaml>=6.0
+tqdm>=4.64.0
+joblib>=1.1.0
+
+# Jupyter for notebooks
+jupyter>=1.0.0
+ipykernel>=6.15.0
+
+# Statistical Analysis
+statsmodels>=0.13.0
