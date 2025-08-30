@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Workflow Flowchart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 15px;
+            background: #f5f6fa;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .workflow {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .stage {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .process-box {
+            background: #3498db;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 10px;
+            font-weight: bold;
+            min-width: 80px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            line-height: 1.2;
+        }
+
+        .arrow-down {
+            color: #2c3e50;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .plus {
+            color: #e74c3c;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 3px;
+        }
+
+        /* Color coding for different stages */
+        .preprocessing { background: #27ae60 !important; }
+        .imbalance { background: #e67e22 !important; }
+        .missing { background: #8e44ad !important; }
+        .feature-sel { background: #f39c12 !important; }
+        .base-models { background: #2980b9 !important; }
+        .meta-learn { background: #c0392b !important; }
+
+        .stage-label {
+            background: #34495e;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .datasets {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 8px 0;
+        }
+
+        .dataset-box {
+            background: #95a5a6;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            Diabetes Readmission Prediction - Detailed Workflow Pipeline
+        </div>
+
+        <div class="workflow">
+            <!-- Stage 1: Data Preprocessing -->
+            <div class="stage-label">Stage 1: Data Preprocessing</div>
+            <div class="stage">
+                <div class="process-box preprocessing">Data Loading<br>101,766 samples</div>
+                <div class="plus">+</div>
+                <div class="process-box missing">Missing Value<br>Handling<br>(KNN Imputer)</div>
+                <div class="plus">+</div>
+                <div class="process-box preprocessing">Categorical<br>Encoding<br>(Label Encoder)</div>
+                <div class="plus">+</div>
+                <div class="process-box imbalance">Class Imbalance<br>Handling<br>(Class Weights<br>7.96:1 ratio)</div>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <!-- Stage 2: Feature Selection -->
+            <div class="stage-label">Stage 2: Feature Selection Methods</div>
+            <div class="stage">
+                <div class="process-box feature-sel">Chi-Square<br>Statistical Test<br>(Categorical)</div>
+                <div class="process-box feature-sel">F-Test<br>ANOVA<br>(Numerical)</div>
+                <div class="process-box feature-sel">Random Forest<br>Importance<br>(Tree-based)</div>
+                <div class="process-box feature-sel">Combined<br>Selection<br>(Hybrid)</div>
+            </div>
+
+            <!-- Generated Datasets -->
+            <div class="datasets">
+                <div class="dataset-box">Chi² Dataset<br>20 features</div>
+                <div class="dataset-box">F-test Dataset<br>20 features</div>
+                <div class="dataset-box">RF Dataset<br>14 features</div>
+                <div class="dataset-box">Combined Dataset<br>20 features</div>
+                <div class="dataset-box">Full Dataset<br>53 features</div>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <!-- Stage 3: Base Models -->
+            <div class="stage-label">Stage 3: Base Model Training (Per Dataset)</div>
+            <div class="stage">
+                <div class="process-box base-models">Logistic<br>Regression<br>(class_weight<br>balanced)</div>
+                <div class="process-box base-models">Random Forest<br>100 trees<br>(class_weight<br>balanced)</div>
+                <div class="process-box base-models">Naive Bayes<br>Gaussian<br>(auto priors)</div>
+                <div class="process-box base-models">Decision Tree<br>max_depth=15<br>(class_weight<br>balanced)</div>
+            </div>
+
+            <div class="datasets">
+                <div class="dataset-box">Base Predictions<br>(Probabilities)</div>
+                <div class="dataset-box">Confidence Scores<br>(Max Probability)</div>
+                <div class="dataset-box">Model Performance<br>(Cross-validation)</div>
+                <div class="dataset-box">Feature Importance<br>(Per Model)</div>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <!-- Stage 4: Meta-Learning -->
+            <div class="stage-label">Stage 4: Meta-Learning Integration</div>
+            <div class="stage">
+                <div class="process-box meta-learn">Feature<br>Combination<br>(Original + Meta)</div>
+                <div class="plus">+</div>
+                <div class="process-box meta-learn">TensorFlow<br>Neural Network<br>[64,32,16,1]</div>
+                <div class="plus">+</div>
+                <div class="process-box meta-learn">Batch Normalization<br>+ Dropout<br>Regularization</div>
+                <div class="plus">+</div>
+                <div class="process-box meta-learn">Early Stopping<br>+ Adam<br>Optimizer</div>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <!-- Final Output -->
+            <div class="stage-label">Output: Enhanced Predictions</div>
+            <div class="stage">
+                <div class="process-box" style="background: #2c3e50;">Enhanced Readmission<br>Predictions<br><br></div>
+            </div>
+        </div>
+
+        <!-- Technical Details Summary -->
+        <div style="margin-top: 20px; background: #ecf0f1; padding: 15px; border-radius: 6px;">
+            <div style="display: flex; justify-content: space-between; font-size: 11px;">
+                <div><strong>Missing Values:</strong> Median (numerical), Mode (categorical)</div>
+                <div><strong>Imbalance:</strong> 88.8% vs 11.2% → Class weights {0: 0.57, 1: 4.24}</div>
+                <div><strong>Encoding:</strong> ICD-9 grouping, Medication binary, HbA1c mapping</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

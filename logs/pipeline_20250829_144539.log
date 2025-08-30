@@ -65,3 +65,18 @@ NO     54864
 <30    11357
 Name: count, dtype: int64
 2025-08-29 14:45:40,507 - preprocessing.data_cleaner - INFO - Dropping columns with >50.0% missing: ['max_glu_serum', 'A1Cresult']
+2025-08-29 14:45:48,847 - __main__ - INFO - Processed data saved to: data/processed/cleaned_data.csv
+2025-08-29 14:45:48,847 - __main__ - INFO - Final dataset shape: (101766, 75)
+2025-08-29 14:45:48,882 - __main__ - INFO - ============================================================
+2025-08-29 14:45:48,882 - __main__ - INFO - STEP 2: Feature Selection
+2025-08-29 14:45:48,883 - __main__ - INFO - ============================================================
+2025-08-29 14:45:48,931 - __main__ - INFO - Running statistical feature selection...
+2025-08-29 14:45:49,364 - feature_selection.statistical_selection - INFO - F-test selection: 20 features selected
+2025-08-29 14:46:31,589 - feature_selection.statistical_selection - INFO - Mutual info selection: 20 features selected
+2025-08-29 14:46:31,598 - __main__ - INFO - Running model-based feature selection...
+2025-08-29 14:46:35,638 - feature_selection.model_based_selection - INFO - Random Forest selection: 24 features selected
+2025-08-29 14:46:38,034 - feature_selection.model_based_selection - INFO - XGBoost selection: 43 features selected
+2025-08-29 14:46:39,519 - feature_selection.model_based_selection - INFO - Logistic Regression selection: 50 features selected
+2025-08-29 14:46:39,530 - feature_selection.model_based_selection - INFO - Ensemble model selection: 20 features selected
+2025-08-29 14:46:39,542 - __main__ - INFO - Running SHAP-based feature selection...
+2025-08-29 14:46:39,542 - __main__ - ERROR - Pipeline execution failed: name 'RandomForestClassifier' is not defined

@@ -61,7 +61,13 @@ class BaseModels:
         if model_name not in self.models:
             raise ValueError(f"Model {model_name} not found")
         
+        self.logger.info(f"Starting training for {model_name}...")
         model = self.models[model_name]
+        
+        # Skip hyperparameter tuning for SVM if dataset is large
+        if model_name == 'svm' and X_train.shape[0] > 10000:
+            self.logger.info(f"Large dataset detected ({X_train.shape[0]} samples). Skipping hyperparameter tuning for SVM.")
+            hyperparameter_tuning = False
         
         if hyperparameter_tuning:
             model = self._tune_hyperparameters(model_name, model, X_train, y_train)
@@ -97,21 +103,21 @@ class BaseModels:
                 'metric': ['euclidean', 'manhattan']
             },
             'svm': {
-                'C': [0.1, 1, 10],
-                'kernel': ['rbf', 'linear'],
-                'gamma': ['scale', 'auto']
+                'C': [0.1, 1],  # Reduced parameter grid
+                'kernel': ['linear'],  # Only linear kernel (much faster)
+                'gamma': ['scale']  # Single gamma value
             },
             'xgboost': {
-                'n_estimators': [50, 100, 200],
-                'max_depth': [3, 5, 7],
-                'learning_rate': [0.01, 0.1, 0.2],
-                'subsample': [0.8, 0.9, 1.0]
+                'n_estimators': [50, 100],  # Reduced options
+                'max_depth': [3, 5],  # Reduced options
+                'learning_rate': [0.1],  # Single value
+                'subsample': [0.8]  # Single value
             },
             'neural_network': {
-                'hidden_layer_sizes': [(50,), (100,), (100, 50), (200, 100, 50)],
-                'activation': ['relu', 'tanh'],
-                'alpha': [0.0001, 0.001, 0.01],
-                'learning_rate': ['constant', 'adaptive']
+                'hidden_layer_sizes': [(50,), (100,)],  # Reduced options
+                'activation': ['relu'],  # Single activation
+                'alpha': [0.001],  # Single value
+                'learning_rate': ['constant']  # Single value
             }
         }
         

@@ -1,0 +1,81 @@
+2025-08-29 14:47:35,995 - __main__ - INFO - Pipeline initialized successfully
+2025-08-29 14:47:35,997 - __main__ - INFO - STARTING DIABETES READMISSION PREDICTION PIPELINE
+2025-08-29 14:47:35,999 - __main__ - INFO - ================================================================================
+2025-08-29 14:47:35,999 - __main__ - INFO - ============================================================
+2025-08-29 14:47:36,001 - __main__ - INFO - STEP 1: Dataset Analysis & Preprocessing
+2025-08-29 14:47:36,002 - __main__ - INFO - ============================================================
+2025-08-29 14:47:36,590 - preprocessing.data_cleaner - INFO - Data loaded successfully. Shape: (101766, 50)
+2025-08-29 14:47:36,590 - __main__ - INFO - Dataset shape: (101766, 50)
+2025-08-29 14:47:36,922 - __main__ - INFO - Missing values per column:
+encounter_id                    0
+patient_nbr                     0
+race                            0
+gender                          0
+age                             0
+weight                          0
+admission_type_id               0
+discharge_disposition_id        0
+admission_source_id             0
+time_in_hospital                0
+payer_code                      0
+medical_specialty               0
+num_lab_procedures              0
+num_procedures                  0
+num_medications                 0
+number_outpatient               0
+number_emergency                0
+number_inpatient                0
+diag_1                          0
+diag_2                          0
+diag_3                          0
+number_diagnoses                0
+max_glu_serum               96420
+A1Cresult                   84748
+metformin                       0
+repaglinide                     0
+nateglinide                     0
+chlorpropamide                  0
+glimepiride                     0
+acetohexamide                   0
+glipizide                       0
+glyburide                       0
+tolbutamide                     0
+pioglitazone                    0
+rosiglitazone                   0
+acarbose                        0
+miglitol                        0
+troglitazone                    0
+tolazamide                      0
+examide                         0
+citoglipton                     0
+insulin                         0
+glyburide-metformin             0
+glipizide-metformin             0
+glimepiride-pioglitazone        0
+metformin-rosiglitazone         0
+metformin-pioglitazone          0
+change                          0
+diabetesMed                     0
+readmitted                      0
+dtype: int64
+2025-08-29 14:47:36,938 - __main__ - INFO - Target variable distribution:
+readmitted
+NO     54864
+>30    35545
+<30    11357
+Name: count, dtype: int64
+2025-08-29 14:47:37,371 - preprocessing.data_cleaner - INFO - Dropping columns with >50.0% missing: ['max_glu_serum', 'A1Cresult']
+2025-08-29 14:47:49,340 - __main__ - INFO - Processed data saved to: data/processed/cleaned_data.csv
+2025-08-29 14:47:49,340 - __main__ - INFO - Final dataset shape: (101766, 75)
+2025-08-29 14:47:49,383 - __main__ - INFO - ============================================================
+2025-08-29 14:47:49,383 - __main__ - INFO - STEP 2: Feature Selection
+2025-08-29 14:47:49,386 - __main__ - INFO - ============================================================
+2025-08-29 14:47:49,435 - __main__ - INFO - Running statistical feature selection...
+2025-08-29 14:47:49,971 - feature_selection.statistical_selection - INFO - F-test selection: 20 features selected
+2025-08-29 14:48:49,471 - feature_selection.statistical_selection - INFO - Mutual info selection: 20 features selected
+2025-08-29 14:48:49,478 - __main__ - INFO - Running model-based feature selection...
+2025-08-29 14:48:53,834 - feature_selection.model_based_selection - INFO - Random Forest selection: 24 features selected
+2025-08-29 14:48:56,158 - feature_selection.model_based_selection - INFO - XGBoost selection: 43 features selected
+2025-08-29 14:48:57,848 - feature_selection.model_based_selection - INFO - Logistic Regression selection: 50 features selected
+2025-08-29 14:48:57,854 - feature_selection.model_based_selection - INFO - Ensemble model selection: 20 features selected
+2025-08-29 14:48:57,869 - __main__ - INFO - Running SHAP-based feature selection...

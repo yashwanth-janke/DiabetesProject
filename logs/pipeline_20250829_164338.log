@@ -1,0 +1,104 @@
+2025-08-29 16:43:38,445 - __main__ - INFO - Pipeline initialized successfully
+2025-08-29 16:43:38,445 - __main__ - INFO - STARTING DIABETES READMISSION PREDICTION PIPELINE
+2025-08-29 16:43:38,445 - __main__ - INFO - ================================================================================
+2025-08-29 16:43:38,446 - __main__ - INFO - ============================================================
+2025-08-29 16:43:38,446 - __main__ - INFO - STEP 1: Dataset Analysis & Preprocessing
+2025-08-29 16:43:38,446 - __main__ - INFO - ============================================================
+2025-08-29 16:43:39,013 - preprocessing.data_cleaner - INFO - Data loaded successfully. Shape: (101766, 50)
+2025-08-29 16:43:39,013 - __main__ - INFO - Dataset shape: (101766, 50)
+2025-08-29 16:43:39,185 - __main__ - INFO - Missing values per column:
+encounter_id                    0
+patient_nbr                     0
+race                            0
+gender                          0
+age                             0
+weight                          0
+admission_type_id               0
+discharge_disposition_id        0
+admission_source_id             0
+time_in_hospital                0
+payer_code                      0
+medical_specialty               0
+num_lab_procedures              0
+num_procedures                  0
+num_medications                 0
+number_outpatient               0
+number_emergency                0
+number_inpatient                0
+diag_1                          0
+diag_2                          0
+diag_3                          0
+number_diagnoses                0
+max_glu_serum               96420
+A1Cresult                   84748
+metformin                       0
+repaglinide                     0
+nateglinide                     0
+chlorpropamide                  0
+glimepiride                     0
+acetohexamide                   0
+glipizide                       0
+glyburide                       0
+tolbutamide                     0
+pioglitazone                    0
+rosiglitazone                   0
+acarbose                        0
+miglitol                        0
+troglitazone                    0
+tolazamide                      0
+examide                         0
+citoglipton                     0
+insulin                         0
+glyburide-metformin             0
+glipizide-metformin             0
+glimepiride-pioglitazone        0
+metformin-rosiglitazone         0
+metformin-pioglitazone          0
+change                          0
+diabetesMed                     0
+readmitted                      0
+dtype: int64
+2025-08-29 16:43:39,200 - __main__ - INFO - Target variable distribution:
+readmitted
+NO     54864
+>30    35545
+<30    11357
+Name: count, dtype: int64
+2025-08-29 16:43:39,376 - preprocessing.data_cleaner - INFO - Dropping columns with >50.0% missing: ['max_glu_serum', 'A1Cresult']
+2025-08-29 16:43:47,218 - __main__ - INFO - Processed data saved to: data/processed/cleaned_data.csv
+2025-08-29 16:43:47,219 - __main__ - INFO - Final dataset shape: (101766, 75)
+2025-08-29 16:43:47,249 - __main__ - INFO - ============================================================
+2025-08-29 16:43:47,250 - __main__ - INFO - STEP 2: Feature Selection
+2025-08-29 16:43:47,250 - __main__ - INFO - ============================================================
+2025-08-29 16:43:47,291 - __main__ - INFO - Running statistical feature selection...
+2025-08-29 16:43:47,569 - feature_selection.statistical_selection - INFO - F-test selection: 20 features selected
+2025-08-29 16:44:21,586 - feature_selection.statistical_selection - INFO - Mutual info selection: 20 features selected
+2025-08-29 16:44:21,599 - __main__ - INFO - Running model-based feature selection...
+2025-08-29 16:44:25,508 - feature_selection.model_based_selection - INFO - Random Forest selection: 24 features selected
+2025-08-29 16:44:27,877 - feature_selection.model_based_selection - INFO - XGBoost selection: 43 features selected
+2025-08-29 16:44:29,178 - feature_selection.model_based_selection - INFO - Logistic Regression selection: 50 features selected
+2025-08-29 16:44:29,184 - feature_selection.model_based_selection - INFO - Ensemble model selection: 20 features selected
+2025-08-29 16:44:29,189 - __main__ - INFO - Running correlation-based feature selection...
+2025-08-29 16:44:29,329 - __main__ - INFO - Running variance-based feature selection...
+2025-08-29 16:44:29,556 - __main__ - INFO - Running hybrid feature selection...
+2025-08-29 16:44:30,877 - __main__ - INFO - statistical feature selection completed: 20 features selected
+2025-08-29 16:44:31,625 - __main__ - INFO - model_based feature selection completed: 20 features selected
+2025-08-29 16:44:32,248 - __main__ - INFO - correlation feature selection completed: 20 features selected
+2025-08-29 16:44:33,047 - __main__ - INFO - variance feature selection completed: 20 features selected
+2025-08-29 16:44:33,746 - __main__ - INFO - hybrid feature selection completed: 20 features selected
+2025-08-29 16:44:33,747 - __main__ - INFO - ============================================================
+2025-08-29 16:44:33,748 - __main__ - INFO - STEP 3: Base Model Training
+2025-08-29 16:44:33,748 - __main__ - INFO - ============================================================
+2025-08-29 16:44:33,748 - __main__ - INFO - Training base models on statistical features...
+2025-08-29 16:46:32,927 - models.base_models - INFO - Best parameters for logistic_regression: {'C': 1, 'penalty': 'l1', 'solver': 'liblinear'}
+2025-08-29 16:46:50,754 - models.base_models - INFO - logistic_regression trained successfully
+2025-08-29 16:46:50,781 - models.base_models - INFO - Successfully trained logistic_regression
+2025-08-29 16:47:00,211 - models.base_models - INFO - Best parameters for decision_tree: {'max_depth': 3, 'min_samples_leaf': 1, 'min_samples_split': 2}
+2025-08-29 16:47:00,435 - models.base_models - INFO - decision_tree trained successfully
+2025-08-29 16:47:00,448 - models.base_models - INFO - Successfully trained decision_tree
+2025-08-29 16:49:25,342 - models.base_models - INFO - Best parameters for random_forest: {'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 200}
+2025-08-29 16:49:29,043 - models.base_models - INFO - random_forest trained successfully
+2025-08-29 16:49:29,318 - models.base_models - INFO - Successfully trained random_forest
+2025-08-29 16:52:16,855 - models.base_models - INFO - Best parameters for knn: {'metric': 'euclidean', 'n_neighbors': 3, 'weights': 'uniform'}
+2025-08-29 16:52:16,879 - models.base_models - INFO - knn trained successfully
+2025-08-29 16:52:30,005 - models.base_models - INFO - Successfully trained knn

@@ -1,0 +1,32 @@
+DIABETES READMISSION PREDICTION - DATASET SUMMARY
+============================================================
+
+Dataset: CLEANED
+Path: data/processed/cleaned_data.csv
+Shape: (101766, 54)
+Number of features: 53
+
+Dataset: CHI2
+Path: data/processed/feature_selected\chi2_selected.csv
+Shape: (101766, 21)
+Number of features: 20
+Features: ['age', 'admission_type_id', 'discharge_disposition_id', 'admission_source_id', 'time_in_hospital', 'payer_code', 'medical_specialty', 'num_lab_procedures', 'num_procedures', 'num_medications', 'number_outpatient', 'number_emergency', 'number_inpatient', 'diag_1', 'diag_2', 'diag_3', 'number_diagnoses', 'diag_1_group', 'diag_3_group', 'insulin_changed']
+
+Dataset: F_TEST
+Path: data/processed/feature_selected\f_test_selected.csv
+Shape: (101766, 21)
+Number of features: 20
+Features: ['age', 'admission_type_id', 'discharge_disposition_id', 'time_in_hospital', 'medical_specialty', 'num_lab_procedures', 'num_procedures', 'num_medications', 'number_outpatient', 'number_emergency', 'number_inpatient', 'number_diagnoses', 'metformin', 'repaglinide', 'change', 'diabetesMed', 'diag_1_group', 'diag_3_group', 'metformin_changed', 'insulin_changed']
+
+Dataset: RF_IMPORTANCE
+Path: data/processed/feature_selected\rf_importance_selected.csv
+Shape: (101766, 15)
+Number of features: 14
+Features: ['age', 'discharge_disposition_id', 'time_in_hospital', 'payer_code', 'medical_specialty', 'num_lab_procedures', 'num_medications', 'number_outpatient', 'number_emergency', 'number_inpatient', 'diag_1', 'diag_2', 'diag_3', 'number_diagnoses']
+
+Dataset: COMBINED
+Path: data/processed/feature_selected\combined_selected.csv
+Shape: (101766, 21)
+Number of features: 20
+Features: ['number_inpatient', 'discharge_disposition_id', 'number_emergency', 'diag_1', 'num_medications', 'diag_3', 'diag_2', 'number_diagnoses', 'time_in_hospital', 'num_lab_procedures', 'age', 'number_outpatient', 'medical_specialty', 'admission_type_id', 'payer_code', 'num_procedures', 'insulin', 'diag_1_group', 'admission_source_id', 'metformin']
+

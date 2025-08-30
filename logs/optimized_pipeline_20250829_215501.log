@@ -1,0 +1,8 @@
+2025-08-29 21:55:01,844 - INFO - Optimized pipeline initialized
+2025-08-29 21:55:02,729 - INFO - Data loaded: (101766, 50)
+2025-08-29 21:55:03,014 - INFO - Dropping high-missingness columns: ['max_glu_serum', 'A1Cresult']
+2025-08-29 21:55:03,358 - INFO - Missing values handled. Final shape: (101766, 48)
+2025-08-29 21:55:22,998 - INFO - Chi-square selection: 20 features selected
+2025-08-29 21:55:23,168 - INFO - F-test selection: 20 features selected
+2025-08-29 21:55:28,257 - INFO - RF importance selection: 14 features selected
+2025-08-29 21:55:31,923 - INFO - Combined selection: 20 features selected
